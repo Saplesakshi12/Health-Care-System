@@ -1,0 +1,64 @@
+<html>
+<link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/checkout/">
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<title>Health Care System</title>
+</head>
+
+<body>
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+        <table border="1" class="table ">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Patient Name</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col">gender</th>
+                        <th scope="col">state</th>
+                    </tr>
+                </thead>
+                <tbody id="Data">
+                    </tbody>
+                </table>
+</section>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script>
+    let Data = localStorage.getItem('Data');
+    if(Data==null)
+        notesObj=[];
+    else
+        notesObj=JSON.parse(Data);
+    let html='';
+    notesObj.forEach(function(elements,index){
+        html +=`
+                <tr>
+                    <td>${elements.patientName}</td>
+                    <td>${elements.Age}</td>
+                    <td>${elements.Email}</td>
+                    <td>${elements.Contact}</td>
+                    <td>${elements.gender}</td>
+                    <td>${elements.state}</td>
+                </tr>
+
+        `;
+    });
+    let noteEln=document.getElementById('Data');
+    if(notesObj.length!=0)
+        noteEln.innerHTML=html;
+    else
+        noteEln.innerHTML='<b>** Nothing to show notes</b>';
+</script>
+</body>
+</html>

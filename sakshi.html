@@ -1,0 +1,193 @@
+<html>
+<link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/checkout/">
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<title>Health Care System</title>
+</head>
+
+<body>
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+
+<!-- ============================ COMPONENT REGISTER   ================================= -->
+<div id="failure" class="alert alert-danger alert-dismissible fade" role="alert">
+        <strong>ERROR!</strong> something went wrong 
+      </div>
+	<div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+      <article class="card-body">
+		<header class="mb-4"><h4 class="card-title">Health Care System</h4></header>
+		<form onsubmit="return validate()" action="sakshi.html" method="post">
+				<div class="form-row">
+					<div class="col form-group">
+						<label for="patientName">Patient Full Name</label>
+					  	<input type="text" id="patientName" class="form-control" required name="fullname" placeholder="">
+						  <span id="pname" class="text-danger"></span>
+					</div> <!-- form-group end.// -->
+					<div class="col form-group">
+						<label for="Age" >Age</label>
+					  	<input type="number" class="form-control" id="Age" placeholder="" required name="age">
+						  <span id="validAge" class="text-danger"></span>
+					</div> <!-- form-group end.// -->
+				</div> <!-- form-row end.// -->
+				<div class="form-group">
+					<label for="Email-ID">Email</label>
+					<input type="email" class="form-control" id="Email-ID" placeholder="" required name="emailid">
+					<small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div> <!-- form-group end.// -->
+                <div class="form-group">
+                    <label for="Contact">Contact</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">+91</span>
+                        </div>
+                        <input type="text" class="form-control" id="Contact" placeholder="" required name="contact">
+                        <span id= "number" class = "text-danger"></span>
+                    </div>
+				</div> <!-- form-group end.// -->
+				<div class="form-group">
+					<label class="custom-control custom-radio custom-control-inline" for="male">
+					  <input class="custom-control-input" checked="" type="radio" name="gender" id="male" value="m">
+					  <span class="custom-control-label"> Male </span>
+					</label>
+					<label class="custom-control custom-radio custom-control-inline" for="female">
+					  <input class="custom-control-input" type="radio" name="gender" id="female" value="f">
+					  <span class="custom-control-label"> Female </span>
+					</label>
+				</div> <!-- form-group end.// -->
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<label for="state">Disease Type</label>
+                            <select class="custom-select d-block w-100" id="state" required>
+                                <option value="">Choose...</option>
+                                <option value="Fever">Fever</option>
+                                <option value="cough">cough</option>
+                                <option value="cold">cold</option>
+                                <option value="Dengue">Dengue</option>
+                                <option value="Tuberculosis">Tuberculosis</option>
+                                <option value="Asthma">Asthma</option>
+                                <option value="Liver">Liver Disease</option>
+                                <option value="Cancer">Cancer</option>
+                                <option value="Coronary">Coronary artery disease</option>
+                                <option value="Stroke">Stroke</option>
+                                <option value="Pneumonia">Pneumonia</option>
+                                <option value="Diabetes">Diabetes Mellitus</option>
+                                <option value="Blood">High Blood Pressure</option>
+                            </select>
+					</div> <!-- form-group end.// --> 
+				</div>
+			    <div class="form-group">
+			        <button type="submit" id="submit" value="register" name="register" class="btn btn-primary btn-block"> Register  </button>
+			    </div> <!-- form-group// -->            
+			</form>
+		</article><!-- card-body.// -->
+    </div> <!-- card .// -->
+    <br><br>
+<!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+</section>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script>
+const patientName = document.getElementById("patientName");
+const Age=document.getElementById("Age");
+const Email=document.getElementById("Email-ID");
+const Contact=document.getElementById("Contact");
+const gender=document.getElementsByName("gender")[0];
+const failure = document.getElementById("failure");
+const state = document.getElementById("state");
+let validcontact=false;
+let validname = false;
+let validage = false;
+
+state.addEventListener('input', function () {
+    window.open(state.value+'.html', '_blank');
+})
+
+Age.addEventListener('input', function () {
+    if (Age.value<=100) {
+        Age.classList.remove('is-invalid');
+        Age.classList.add('is-valid');
+        document.getElementById("validAge").innerHTML = "";
+        validage = true;
+    }
+    else {
+        Age.classList.add('is-invalid');
+        Age.classList.remove('is-valid');
+        document.getElementById("validAge").innerHTML = "please enter valid age";
+        validage = false;
+    }
+})
+
+patientName.addEventListener('input', function () {
+    let reg = /^[a-zA-Z ]{6,30}$/;
+    let str = patientName.value;
+    if (reg.test(str)) {
+        patientName.classList.remove('is-invalid');
+        patientName.classList.add('is-valid');
+        document.getElementById("pname").innerHTML = "";
+        validname = true;
+    }
+    else {
+        patientName.classList.add('is-invalid');
+        patientName.classList.remove('is-valid');
+        document.getElementById("pname").innerHTML = "patient name must be at lest 6 to 30 character long";
+        validname = false;
+    }
+
+});
+Contact.addEventListener('input',function(){
+    let reg=/^[0-9]{10}$/;
+    let str=Contact.value;
+    if(reg.test(str)){
+        Contact.classList.remove('is-invalid');
+        Contact.classList.add('is-valid');
+        document.getElementById("number").innerHTML="";
+        validcontact=true;
+    }
+    else{
+        Contact.classList.add('is-invalid');
+        Contact.classList.remove('is-valid');
+        document.getElementById("number").innerHTML="Invalid mobile number";
+        validcontact=false;
+    }
+
+});
+function validate() {
+    if (validname &&  validcontact && validage) {
+        let Data = localStorage.getItem('Data');
+        if(Data==null)
+            notesObj=[];
+        else
+            notesObj=JSON.parse(Data);
+        let myObj={
+            patientName:patientName.value,
+            Age:Age.value,
+            Email:Email.value,
+            Contact:Contact.value,
+            gender:gender.value,
+            state:state.value
+        }
+        notesObj.push(myObj);
+        localStorage.setItem('Data',JSON.stringify(notesObj));
+        return true;
+    }
+    else {
+        let failure = document.getElementById("failure");
+        failure.classList.add('show');
+        setTimeout(function () {
+            failure.classList.remove('show');
+        }, 5000)
+        return false;
+    }
+}
+</script>
+</body>
+</html>
