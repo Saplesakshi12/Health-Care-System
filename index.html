@@ -18,7 +18,7 @@
 	<div class="card mx-auto" style="max-width:520px; margin-top:40px;">
       <article class="card-body">
 		<header class="mb-4"><h4 class="card-title">Health Care System</h4></header>
-		<form onsubmit="return validate()" action="" method="">
+		<form onsubmit="return validate()" action="" method="post">
 				<div class="form-row">
 					<div class="col form-group">
 						<label for="patientName">Patient Full Name</label>
@@ -163,7 +163,7 @@ Contact.addEventListener('input',function(){
 
 });
 function validate() {
-    if(male == "" ){ mygender = "female" }
+    if(male.value == "" ){ mygender = "female" }
    else{mygender = "male" }
     if (validname &&  validcontact && validage) {
         let Data = localStorage.getItem('Data');
