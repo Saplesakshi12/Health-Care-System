@@ -100,7 +100,8 @@ const patientName = document.getElementById("patientName");
 const Age=document.getElementById("Age");
 const Email=document.getElementById("Email-ID");
 const Contact=document.getElementById("Contact");
-const gender=document.getElementsByName("gender")[0];
+const male=document.getElementsByName("gender")[0];
+const female=document.getElementsByName("gender")[1];
 const failure = document.getElementById("failure");
 const state = document.getElementById("state");
 let validcontact=false;
@@ -161,6 +162,8 @@ Contact.addEventListener('input',function(){
 
 });
 function validate() {
+    if(male){ let mygender = "male" }
+   else{ let mygender = "female" }
     if (validname &&  validcontact && validage) {
         let Data = localStorage.getItem('Data');
         if(Data==null)
@@ -172,7 +175,7 @@ function validate() {
             Age:Age.value,
             Email:Email.value,
             Contact:Contact.value,
-            gender:gender.value,
+            gender:mygender,
             state:state.value
         }
         notesObj.push(myObj);
