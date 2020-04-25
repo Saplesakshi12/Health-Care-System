@@ -107,18 +107,18 @@ const state = document.getElementById("state");
 let validcontact=false;
 let validname = false;
 let validage = false;
-let gender = "";
+let mygender = "";
 
 state.addEventListener('input', function () {
     window.open(state.value+'.html', '_blank');
 })
 	
 male.addEventListener('input', function () {
-     gender = "male"
+     mygender = "male"
 })
 	
 female.addEventListener('input', function () {
-     gender = "female"
+     mygender = "female"
 })
 
 Age.addEventListener('input', function () {
@@ -182,7 +182,7 @@ function validate() {
             Age:Age.value,
             Email:Email.value,
             Contact:Contact.value,
-            gender:gender,
+            gender:mygender,
             state:state.value
         }
         notesObj.push(myObj);
