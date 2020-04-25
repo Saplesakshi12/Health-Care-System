@@ -18,7 +18,7 @@
 	<div class="card mx-auto" style="max-width:520px; margin-top:40px;">
       <article class="card-body">
 		<header class="mb-4"><h4 class="card-title">Health Care System</h4></header>
-		<form onsubmit="return validate()" action="" method="post">
+		<form onsubmit="return validate()" action="" method="">
 				<div class="form-row">
 					<div class="col form-group">
 						<label for="patientName">Patient Full Name</label>
@@ -112,6 +112,14 @@ let gender = "";
 state.addEventListener('input', function () {
     window.open(state.value+'.html', '_blank');
 })
+	
+male.addEventListener('input', function () {
+     gender = "male"
+})
+	
+female.addEventListener('input', function () {
+     gender = "female"
+})
 
 Age.addEventListener('input', function () {
     if (Age.value<=100) {
@@ -163,8 +171,6 @@ Contact.addEventListener('input',function(){
 
 });
 function validate() {
-    if(male.value == "" ){ mygender = "female" }
-   else{mygender = "male" }
     if (validname &&  validcontact && validage) {
         let Data = localStorage.getItem('Data');
         if(Data==null)
@@ -176,7 +182,7 @@ function validate() {
             Age:Age.value,
             Email:Email.value,
             Contact:Contact.value,
-            gender:mygender,
+            gender:gender,
             state:state.value
         }
         notesObj.push(myObj);
