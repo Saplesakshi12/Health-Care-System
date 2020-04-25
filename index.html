@@ -18,7 +18,7 @@
 	<div class="card mx-auto" style="max-width:520px; margin-top:40px;">
       <article class="card-body">
 		<header class="mb-4"><h4 class="card-title">Health Care System</h4></header>
-		<form onsubmit="return validate()" action="index.html" method="post">
+		<form onsubmit="return validate()" action="" method="">
 				<div class="form-row">
 					<div class="col form-group">
 						<label for="patientName">Patient Full Name</label>
@@ -48,11 +48,11 @@
 				</div> <!-- form-group end.// -->
 				<div class="form-group">
 					<label class="custom-control custom-radio custom-control-inline" for="male">
-					  <input class="custom-control-input" checked="" type="radio" name="gender" id="male" value="m">
+					  <input class="custom-control-input" checked="" type="radio" name="gender" id="male" value="male">
 					  <span class="custom-control-label"> Male </span>
 					</label>
 					<label class="custom-control custom-radio custom-control-inline" for="female">
-					  <input class="custom-control-input" type="radio" name="gender" id="female" value="f">
+					  <input class="custom-control-input" type="radio" name="gender" id="female" value="female">
 					  <span class="custom-control-label"> Female </span>
 					</label>
 				</div> <!-- form-group end.// -->
@@ -100,13 +100,14 @@ const patientName = document.getElementById("patientName");
 const Age=document.getElementById("Age");
 const Email=document.getElementById("Email-ID");
 const Contact=document.getElementById("Contact");
-const male=document.getElementsByName("gender")[0];
-const female=document.getElementsByName("gender")[1];
+const male=document.getElementById("male");
+const female=document.getElementById("female");
 const failure = document.getElementById("failure");
 const state = document.getElementById("state");
 let validcontact=false;
 let validname = false;
 let validage = false;
+let gender = "";
 
 state.addEventListener('input', function () {
     window.open(state.value+'.html', '_blank');
@@ -162,8 +163,8 @@ Contact.addEventListener('input',function(){
 
 });
 function validate() {
-    if(male){ let mygender = "male" }
-   else{ let mygender = "female" }
+    if(male == "" ){ mygender = "female" }
+   else{mygender = "male" }
     if (validname &&  validcontact && validage) {
         let Data = localStorage.getItem('Data');
         if(Data==null)
